@@ -61,37 +61,37 @@ public class JobDAO {
         }
     }
 
-//    public ArrayList<Job> selectAllJob(Double min_salary, Integer limit, Integer offset) throws SQLException, ClassNotFoundException {
-//    Class.forName("org.sqlite.JDBC");
-//    Connection conn = DriverManager.getConnection(URL);
-//    PreparedStatement st;
-//
-//    if(min_salary != null && limit != null) {
-//        st = conn.prepareStatement(SELECT_ALL_JOBS_min_PAGINATION);
-//        st.setDouble(1, min_salary);
-//        st.setInt(2, limit);
-//        st.setInt(3, offset);
-//    }
-//    else if(min_salary != null){
-//        st = conn.prepareStatement(SELECT_ALL_JOBS_with_min_salary);
-//        st.setDouble(1, min_salary);
-//    }
-//    else if(limit != null){
-//        st = conn.prepareStatement(SELECT_ALL_JOBS_PAGINATION);
-//        st.setInt(1, limit);
-//        st.setInt(2, offset);
-//    }
-//    else {
-//        st = conn.prepareStatement(SELECT_ALL_JOBS);
-//    }
-//    ResultSet rs = st.executeQuery();
-//    ArrayList<Job> job = new ArrayList<>();
-//    while (rs.next()) {
-//        job.add(new Job(rs));
-//    }
-//
-//    return job;
-//}
+    public ArrayList<Job> selectAllJob(Double min_salary, Integer limit, Integer offset) throws SQLException, ClassNotFoundException {
+    Class.forName("org.sqlite.JDBC");
+    Connection conn = DriverManager.getConnection(URL);
+    PreparedStatement st;
+
+    if(min_salary != null && limit != null) {
+        st = conn.prepareStatement(SELECT_ALL_JOBS_min_PAGINATION);
+        st.setDouble(1, min_salary);
+        st.setInt(2, limit);
+        st.setInt(3, offset);
+    }
+    else if(min_salary != null){
+        st = conn.prepareStatement(SELECT_ALL_JOBS_with_min_salary);
+        st.setDouble(1, min_salary);
+    }
+    else if(limit != null){
+        st = conn.prepareStatement(SELECT_ALL_JOBS_PAGINATION);
+        st.setInt(1, limit);
+        st.setInt(2, offset);
+    }
+    else {
+        st = conn.prepareStatement(SELECT_ALL_JOBS);
+    }
+    ResultSet rs = st.executeQuery();
+    ArrayList<Job> job = new ArrayList<>();
+    while (rs.next()) {
+        job.add(new Job(rs));
+    }
+
+    return job;
+}
 
     public ArrayList<Job> selectAllJob(JobFilterDto filter) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");

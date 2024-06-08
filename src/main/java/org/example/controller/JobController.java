@@ -36,6 +36,12 @@ public class JobController {
                         .ok(job)
                         .type(MediaType.APPLICATION_XML)
                         .build();
+
+            } else if(headers.getAcceptableMediaTypes().contains(MediaType.valueOf("text/csv"))) {
+                return Response
+                        .ok(job)
+                        .type("text/csv")
+                        .build();
             }
             return Response
 //                    .ok(job)
@@ -50,6 +56,8 @@ public class JobController {
 
     @GET
     @Path("{jobId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "text/csv"})
+
     public Response selectJob(@PathParam("jobId") int jobId) throws SQLException{
 
         try {
