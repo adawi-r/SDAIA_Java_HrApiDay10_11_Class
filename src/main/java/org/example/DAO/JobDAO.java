@@ -1,7 +1,10 @@
 package org.example.DAO;
 
+import jakarta.inject.Inject;
 import org.example.models.Job;
 import org.example.dto.JobFilterDto;
+import org.mapstruct.Mapper;
+
 import java.sql.*;
 import java.util.ArrayList;
 
